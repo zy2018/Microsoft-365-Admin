@@ -1,96 +1,12 @@
 server:
   port: 8099
 
+spring:
+  application:
+    name: Microsoft 365 Admin
+  profiles: # 默认的profile为dev
+    active: dev
 
 logging:
   level:
     global: debug
-
-
-spring:
-  mail: # 邮件配置，自行修改
-    host: smtp.porkbun.com # smtp.qq.com
-    port: 587
-    username: office@haoqi.world # 发送邮箱地址
-    password: 506wll%)^ # 发送邮箱密码
-    properties.mail.smtp.auth: true
-    properties.mail.smtp.starttls.enable: true
-  output:
-    ansi:
-      enabled: always
-  h2:
-    console:
-      settings:
-        web-allow-others: true
-      path: /h2-console
-      enabled: false
-  datasource:
-    # 初始化数据导入
-    #    data: classpath*:db/data.sql
-    #    sql-script-encoding: utf-8
-
-    initialization-mode: always
-    continue-on-error: true
-
-    # h2 内存数据库 配置
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:${graph.db.path}
-    username: graph
-    password: 123456
-  jackson:
-    date-format: yyyy-MM-dd HH:mm
-    time-zone: GMT+8
-  jpa:
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        format_sql: false
-    show-sql: false
-#  redis: # redis 配置
-#    database: 0
-#    host: 127.0.0.1
-#    port: 6379
-
-# 程序自定义配置
-graph:
-  cache:
-    token: default # token 缓存方式默认内存，redis 方式 需要配置 redis
-    timeout: # 缓存超时时间  单位分钟
-      user: 60 # 默认一小时
-      license: 1440 # 默认一天
-      domain: 1440 # 默认一天
-  db:
-    path: ${user.home}/.graph/db/graph
-
-  # 后台登陆配置
-  userName: greathaoqi # 登陆账户,自行修改
-  password: 506wll%)^ # 登陆密码，自行修改
-
-  # 邀请注册配置
-  invite: effinghamhighschool # 可以被注册的账号类型，为下面 configs.appName 的配置（必填，','分隔）
-  inviteSub: # 为空表示全部
-  inviteDomain: # 为空表示使用默认域名，格式：xxx.onmicrosoft.com
-  usageLocation: GD,HK,TW #（此处会针对上面的配置覆盖）可选择的地区，用','分隔，首个将成为默认值，为空表示只使用HK（可以为空）
-
-  # api配置
-  configs:
-    - appName: effinghamhighschool # 自定义该账号的类型（建议使用英文：默认域名前缀，必填）
-      appId: d5ac6d49-f701-40a6-b422-2952f1351c2d # 应用程序(客户端) ID client（必填）
-      appTenant: f2a172f5-a652-4c14-ab82-534fea579c70 # 目录(租户) tenant（必填）
-      appSecret: 1ZS~L39V1L.M5W6M5Mkkouie.dx.vGu.vk # secrets（必填）
-      admin: # 全局管理员账号（可以为空）
-      usageLocation: GD #（此处会针对上面的配置覆盖）可选择的地区，用','分隔，首个将成为默认值，为空表示只使用HK（可以为空）
-  subscribed: # 订阅类型，自行添加其他
-    - skuName: STANDARDWOFFPACK_STUDENT
-      displayName: A1 学生版
-      skuId: 314c4481-f395-4525-be8b-2ec4bb1e9d91
-    - skuName: STANDARDWOFFPACK_FACULTY
-      displayName: A1 教师版
-      skuId: 94763226-9b3c-4e75-a931-5c89701abe66
-    - skuName: OFFICE_365_A1_PLUS_FOR_STUDENT
-      displayName: A1P 学生版
-      skuId: e82ae690-a2d5-4d76-8d30-7c6e01e6022e
-    - skuName: OFFICE_365_A1_PLUS_FOR_FACULTY
-      displayName: A1P 教师版
-      skuId: 78e66a63-337a-4a9a-8959-41c6654dfb56

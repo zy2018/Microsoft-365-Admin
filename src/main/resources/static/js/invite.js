@@ -52,7 +52,8 @@ function listUsageLocation(appName) {
         type: "get",
         url: "/front/listUsageLocation",
         data: {
-            appName: appName
+            appName: appName,
+            type: "1"
         },
         success: function (r) {
             if (r.status !== 200) {

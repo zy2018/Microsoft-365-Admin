@@ -7,14 +7,14 @@ ENV LANGUAGE en_US:UTF-8
 ENV LC_ALL en_US.UTF-8
 
 WORKDIR /src
-RUN git clone -b dev https://github.com/6mb/Microsoft-365-Admin.git \
+RUN git clone https://github.com/6mb/Microsoft-365-Admin.git \
     && cd Microsoft-365-Admin \
     && mvn package -Dmaven.test.skip=true
 
 # microsoft
 FROM logr/8-jre-alpine
-COPY --from=build /src/Microsoft-365-Admin/target/microsoft-0.0.1-SNAPSHOT.jar .
-RUN mv microsoft-0.0.1-SNAPSHOT.jar microsoft.jar
+COPY --from=build /src/Microsoft-365-Admin/target/microsoft-365-admin-*-RELEASE.jar .
+RUN mv microsoft-365-admin-*-RELEASE.jar microsoft.jar
 
 #执行
 CMD java -jar microsoft.jar --spring.profile.active=dev

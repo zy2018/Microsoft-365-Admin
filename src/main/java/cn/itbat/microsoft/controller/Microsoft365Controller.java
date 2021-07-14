@@ -68,11 +68,11 @@ public class Microsoft365Controller {
      * @return 地区
      */
     @GetMapping("/listUsageLocation")
-    public BaseResultVo listUsageLocation(String appName) {
+    public BaseResultVo listUsageLocation(String appName,String type) {
         if (graphProperties.getConfig(appName) == null) {
             return BaseResultVo.error("组织类型不存在！");
         }
-        return BaseResultVo.success(graphProperties.listUsageLocation(appName));
+        return BaseResultVo.success(graphProperties.listUsageLocation(appName,type));
     }
 
     /**

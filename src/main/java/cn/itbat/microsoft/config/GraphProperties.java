@@ -144,7 +144,13 @@ public class GraphProperties {
         return null;
     }
 
-    public String[] listUsageLocation(String appName) {
+    public String[] listUsageLocation(String appName, String type) {
+        if ("0".equals(type)){
+            return getConfig(appName).getUsageLocation().split(",");
+        }
+        else if("1".equals(type)){
+            return getUsageLocation().split(",");
+        }
         String usageLocations = getConfig(appName).getUsageLocation();
         if (StringUtils.isEmpty(usageLocations)) {
             usageLocations = getUsageLocation();

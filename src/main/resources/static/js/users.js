@@ -234,7 +234,8 @@ function listUsageLocation() {
         url: path + "/365/listUsageLocation",
         dataType: "json",
         data: {
-            "appName": getAppName()
+            "appName": getAppName(),
+            "type": "0"
         },
         success: function (r) {
             if (r.status !== 200) {

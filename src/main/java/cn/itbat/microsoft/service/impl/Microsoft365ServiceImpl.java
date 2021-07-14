@@ -256,7 +256,7 @@ public class Microsoft365ServiceImpl implements Microsoft365Service {
             graphUserVo.setDomain(graphCache.getDomainCache(graphUserVo.getAppName()).stream().filter(l -> l.isDefault).collect(Collectors.toList()).get(0).id);
         }
         if (StringUtils.isEmpty(graphUserVo.getUsageLocation())) {
-            graphUserVo.setUsageLocation(graphProperties.listUsageLocation(graphUserVo.getAppName())[0]);
+            graphUserVo.setUsageLocation(graphProperties.listUsageLocation(graphUserVo.getAppName(),"0")[0]);
         }
         // 构建用户对象
         GraphUser graphUser = GraphUser.builder()
@@ -361,7 +361,7 @@ public class Microsoft365ServiceImpl implements Microsoft365Service {
             domain = graphCache.getDomainCache(appName).stream().filter(l -> l.isDefault).collect(Collectors.toList()).get(0).id;
         }
         if (StringUtils.isEmpty(usageLocation)) {
-            usageLocation = graphProperties.listUsageLocation(appName)[0];
+            usageLocation = graphProperties.listUsageLocation(appName,"0")[0];
         }
         for (int i = 0; i < num; i++) {
             try {

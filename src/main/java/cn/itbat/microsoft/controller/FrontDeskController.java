@@ -68,7 +68,7 @@ public class FrontDeskController {
      * @return 地区
      */
     @GetMapping("/listUsageLocation")
-    public BaseResultVo listUsageLocation(String appName) {
-        return BaseResultVo.success(graphProperties.listUsageLocation(appName));
+    public BaseResultVo listUsageLocation(String appName, String type) {
+        return BaseResultVo.success(graphProperties.listUsageLocation(appName,type));
     }
 }

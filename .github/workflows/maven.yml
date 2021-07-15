@@ -36,5 +36,5 @@ jobs:
         username: ${{ secrets.VPS_USERNAME }}
         password: ${{ secrets.VPS_PASSWORD }}
         source: "./target/microsoft-365-admin-1.6.2-RELEASE.jar"
-        target: "/etc/office/"
+        target: "/etc/office/release/"
         strip_components: 2
